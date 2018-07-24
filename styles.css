@@ -96,6 +96,12 @@ body {
     background-color: rgba(0, 0, 0, 0.75);
 }
 
+.modal-content {
+    position: relative;
+    width: 30em;
+    height: 30em;
+}
+
 .modal-image {
     display: flex;
     flex-direction: column;
@@ -106,7 +112,34 @@ body {
 
 .close-button {
     position: absolute;
+    font-size: 3em;
+    color: white;
+    top: 0;
+    right: 0;
 }
 
+.right-arrow {
+    position: absolute;
+    font-size: 3em;
+    color: white;
+    top: 45%;
+    right: 0;
+}
+
+.left-arrow {
+    position: absolute;
+    font-size: 3em;
+    color: white;
+    top: 45%;
+    left: 0;
+}
+
+.black-outline {
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
 
 

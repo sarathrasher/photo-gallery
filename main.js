@@ -14,19 +14,18 @@ var images = [
 ];
 
 var container = document.querySelector('.image-list');
-
-var background= document.getElementsByClassName('background')[0];
 var modal = document.getElementsByClassName('modal')[0];
 var modalImage = document.getElementsByClassName('modal-image')[0];
 var modalContent = document.getElementsByClassName('modal-content')[0];
 var button = document.getElementsByClassName('close-button')[0];
 var rightArrow = document.getElementsByClassName('right-arrow')[0];
 var leftArrow = document.getElementsByClassName('left-arrow')[0];
+var index = null
+
 
 var setSource = function (index) {
     modalImage.setAttribute('src', images[index].url);
 }
-var index = null
 
 var handleClick = function (event) {
     index = event.target.id;
@@ -45,21 +44,19 @@ var handleRightArrow = function (event) {
     if (index === images.length - 1) {
         index = 0;
     } else {
-        index--;
+        index++;
     }
     setSource(index);
-
 };
 
 var handleLeftArrow = function (event) {
     if (index === 0) {
         index = images.length - 1;
     } else {
-        index++;
+        index--;
     }
     setSource(index);
 };
-
 
 for (var i = 0; i < images.length; i++) {
     var newImage = document.createElement('img');
@@ -69,7 +66,7 @@ for (var i = 0; i < images.length; i++) {
 
     var caption = document.createElement('p');
     caption.textContent = images[i].caption;
-    caption.classList.add('caption')
+    caption.classList.add('caption', 'black-outline')
     caption.id = i;
     caption.addEventListener('click', handleClick);
 
