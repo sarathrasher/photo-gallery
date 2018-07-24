@@ -2,6 +2,7 @@ html, body {
     width: 100%;
     height: 100%;
     font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -14,8 +15,7 @@ body {
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
-    background-image: url("images/banner.jpg");
-    -webkit-background-size: cover;
+    background: rgb(160, 224, 233);
 }
 
 .selfie {
@@ -35,12 +35,11 @@ body {
 .main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    
 }
 
 .image-list {
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
     list-style: none;
     overflow-y: auto;
@@ -48,21 +47,23 @@ body {
 
 .post {
     flex: 1;
-    flex-basis: 30%;
+    flex-basis: 33%;
 }
 
 .image-post {
     position: relative;
+    width: 15em;
 }
 
-.post:hover .caption {
+.image-post:hover .caption {
     display: flex;
 }
 
 .image {
     display: block;
-    width: 25em;
-    height: auto;
+    height: 15em;
+    width: 100%;
+
 }
 
 .caption {
@@ -81,6 +82,45 @@ body {
     align-items: center;
 }
 
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
 
 
 
