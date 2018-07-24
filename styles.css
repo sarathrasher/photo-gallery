@@ -82,7 +82,6 @@ body {
     align-items: center;
 }
 
-
 .modal {
     display: none;
     position: absolute;
@@ -92,7 +91,7 @@ body {
 
 .open {
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.75);
 }
