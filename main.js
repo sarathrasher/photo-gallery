@@ -13,14 +13,24 @@ var images = [
 
 var container = document.querySelector('.image-list');
 
+var background= document.getElementsByClassName('background')[0];
 var modal = document.getElementsByClassName('modal')[0];
-modal.style.display = 'none';
+var modalImage = document.getElementsByClassName('modal-image')[0];
+var modalContent = document.getElementsByClassName('modal-content')[0];
+
+var button = document.getElementsByClassName('close-button')[0];
 
 var handleClick = function (event) {
     var index = event.target.id;
-    var modalImage = document.getElementsByClassName('modal-image')[0];
     modalImage.setAttribute('src', images[index].url);
-    modal.style.display = 'block';
+    button.addEventListener('click', handleClose);
+    modal.setAttribute('class', 'open modal');
+  
+};
+
+var handleClose = function (event) {
+    modal.setAttribute('class', 'modal');
+   
 }
 
 for (var i = 0; i < images.length; i++) {
@@ -33,7 +43,7 @@ for (var i = 0; i < images.length; i++) {
     caption.textContent = images[i].caption;
     caption.classList.add('caption')
     caption.id = i;
-    caption.onclick = handleClick;
+    caption.addEventListener('click', handleClick);
 
     var listItem = document.createElement('li');
     listItem.classList.add('image-post');
