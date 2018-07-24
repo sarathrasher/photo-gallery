@@ -17,20 +17,19 @@ var background= document.getElementsByClassName('background')[0];
 var modal = document.getElementsByClassName('modal')[0];
 var modalImage = document.getElementsByClassName('modal-image')[0];
 var modalContent = document.getElementsByClassName('modal-content')[0];
-
 var button = document.getElementsByClassName('close-button')[0];
+
 
 var handleClick = function (event) {
     var index = event.target.id;
     modalImage.setAttribute('src', images[index].url);
     button.addEventListener('click', handleClose);
     modal.setAttribute('class', 'open modal');
-  
+
 };
 
 var handleClose = function (event) {
     modal.setAttribute('class', 'modal');
-   
 }
 
 for (var i = 0; i < images.length; i++) {
