@@ -32,12 +32,12 @@ for (var i = 0; i < images.length; i++) {
         var index = i;
 
         var newImage = document.createElement('img');
-        newImage.setAttribute('src', images[i].url);
+        newImage.setAttribute('src', images[index].url);
         newImage.classList.add('image');
         
     
         var caption = document.createElement('p');
-        caption.textContent = images[i].caption;
+        caption.textContent = images[index].caption;
         caption.classList.add('caption', 'black-outline', 'pointer')
         
     
