@@ -146,6 +146,15 @@ body {
     cursor: pointer;
 }
 
-
+@media (max-width: 500px) {
+    .modal-content {
+        width: 20em;
+        height: 20em;
+    }
+    .modal-image {
+        width: 20em;
+        height: 20em;
+    }
+}
 
 
