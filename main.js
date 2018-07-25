@@ -13,27 +13,54 @@ var images = [
     {caption: 'First embroidery project.', url: "images/fun.jpg"}
 ];
 
-var container = document.querySelector('.image-list');
 var modal = document.getElementsByClassName('modal')[0];
 var modalImage = document.getElementsByClassName('modal-image')[0];
 var modalContent = document.getElementsByClassName('modal-content')[0];
 var button = document.getElementsByClassName('close-button')[0];
 var rightArrow = document.getElementsByClassName('right-arrow')[0];
 var leftArrow = document.getElementsByClassName('left-arrow')[0];
-var index = null
 
+var currentIndex
 
 var setSource = function (index) {
     modalImage.setAttribute('src', images[index].url);
 }
 
-var handleClick = function (event) {
-    index = event.target.id;
-    button.addEventListener('click', handleClose);
-    modal.setAttribute('class', 'open modal');
-    rightArrow.addEventListener('click', handleRightArrow); 
-    leftArrow.addEventListener('click', handleLeftArrow);
-    setSource(index);
+for (var i = 0; i < images.length; i++) {
+    (function(){
+        var container = document.querySelector('.image-list');
+        var index = i;
+
+        var newImage = document.createElement('img');
+        newImage.setAttribute('src', images[i].url);
+        newImage.classList.add('image');
+        
+    
+        var caption = document.createElement('p');
+        caption.textContent = images[i].caption;
+        caption.classList.add('caption', 'black-outline', 'pointer')
+        
+    
+        var listItem = document.createElement('li');
+        listItem.classList.add('image-post');
+    
+        var post = document.createElement('div');
+        post.classList.add('post');
+    
+        listItem.appendChild(newImage);
+        listItem.appendChild(caption);
+    
+        post.appendChild(listItem);
+    
+        container.appendChild(post);
+
+        var handleClick = function handleClick(event) {
+            modal.setAttribute('class', 'open modal');
+            setSource(index);
+            currentIndex = index;
+        };
+        caption.addEventListener('click', handleClick);
+    })(); 
 };
 
 var handleClose = function (event) {
@@ -41,50 +68,23 @@ var handleClose = function (event) {
 }
 
 var handleRightArrow = function (event) {
-    if (index === images.length - 1) {
-        index = 0;
+    if (currentIndex === images.length - 1) {
+        currentIndex = 0;
     } else {
-        index++;
+        currentIndex++;
     }
-    setSource(index);
+    setSource(currentIndex);
 };
 
 var handleLeftArrow = function (event) {
-    if (index === 0) {
-        index = images.length - 1;
+    if ( currentIndex === 0) {
+        currentIndex = images.length - 1;
     } else {
-        index--;
+        currentIndex--;
     }
-    setSource(index);
+    setSource(currentIndex);
 };
 
-for (var i = 0; i < images.length; i++) {
-    var newImage = document.createElement('img');
-    newImage.setAttribute('src', images[i].url);
-    newImage.classList.add('image');
-    
-
-    var caption = document.createElement('p');
-    caption.textContent = images[i].caption;
-    caption.classList.add('caption', 'black-outline', 'pointer')
-    caption.id = i;
-    caption.addEventListener('click', handleClick);
-
-    var listItem = document.createElement('li');
-    listItem.classList.add('image-post');
-
-    var post = document.createElement('div');
-    post.classList.add('post');
-
-    listItem.appendChild(newImage);
-    listItem.appendChild(caption);
-
-    post.appendChild(listItem);
-
-    container.appendChild(post);
-}
-
-
-
-
-
+button.addEventListener('click', handleClose);
+rightArrow.addEventListener('click', handleRightArrow); 
+leftArrow.addEventListener('click', handleLeftArrow);
