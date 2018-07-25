@@ -66,7 +66,7 @@ for (var i = 0; i < images.length; i++) {
 
     var caption = document.createElement('p');
     caption.textContent = images[i].caption;
-    caption.classList.add('caption', 'black-outline')
+    caption.classList.add('caption', 'black-outline', 'pointer')
     caption.id = i;
     caption.addEventListener('click', handleClick);
 
