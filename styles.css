@@ -91,7 +91,8 @@ body {
     width: 100%;
     color: white;
     height: 100%;
-    background: rgba(0,0,0, 0.25);
+    background: rgb(246,245,245);
+    background: radial-gradient(circle, rgba(246,245,245,0.26514355742296913) 69%, rgba(139,139,139,0.2539390756302521) 92%, rgba(101,101,101,0.31836484593837533) 100%);
     margin: 0;
     flex-direction: column;
     justify-content: center;
