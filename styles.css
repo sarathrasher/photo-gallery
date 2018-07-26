@@ -36,7 +36,7 @@ body {
 
 .name {
     margin: 0.25em;
-    font-family: "playlist-script";
+    font-family: "playlist-script", Helvetica, sans-serif;
     font-size: 4em;
 }
 

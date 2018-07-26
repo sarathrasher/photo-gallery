@@ -19,6 +19,7 @@ var modalContent = document.getElementsByClassName('modal-content')[0];
 var button = document.getElementsByClassName('close-button')[0];
 var rightArrow = document.getElementsByClassName('right-arrow')[0];
 var leftArrow = document.getElementsByClassName('left-arrow')[0];
+var modalContent = document.getElementsByClassName('modal-content');
 
 var currentIndex
 
@@ -64,8 +65,12 @@ for (var i = 0; i < images.length; i++) {
 };
 
 var handleClose = function (event) {
-    modal.setAttribute('class', 'modal');
-}
+    if (event.target === button) {
+        modal.setAttribute('class', 'modal');
+    } else if (event.target != leftArrow && event.target != rightArrow) {
+        modal.setAttribute('class', 'modal');
+    } 
+};
 
 var handleRightArrow = function (event) {
     if (currentIndex === images.length - 1) {
@@ -88,3 +93,4 @@ var handleLeftArrow = function (event) {
 button.addEventListener('click', handleClose);
 rightArrow.addEventListener('click', handleRightArrow); 
 leftArrow.addEventListener('click', handleLeftArrow);
+modal.addEventListener('click', handleClose);
