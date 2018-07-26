@@ -27,10 +27,8 @@ var setSource = function (index) {
     modalImage.setAttribute('src', images[index].url);
 }
 
-// for (var i = 0; i < images.length; i++) {
 images.forEach(function(image, i) {
     var container = document.querySelector('.image-list');
-    // var index = i;
 
     var newImage = document.createElement('img');
     newImage.setAttribute('src', images[i].url);
@@ -61,14 +59,11 @@ images.forEach(function(image, i) {
     };
     caption.addEventListener('click', handleClick);
 }); 
-// };
-
-// images.forEach(addNewImage);
 
 var handleClose = function (event) {
     if (event.target === button) {
         modal.setAttribute('class', 'modal');
-    } else if (event.target != leftArrow && event.target != rightArrow) {
+    } else if (event.target != leftArrow && event.target != rightArrow && event.target != modalImage) {
         modal.setAttribute('class', 'modal');
     } 
 };
