@@ -61,26 +61,25 @@ images.forEach(function(image, i) {
 }); 
 
 var handleClose = function (event) {
-    if (event.target === button) {
-        modal.setAttribute('class', 'modal');
-    } else if (event.target != leftArrow && event.target != rightArrow && event.target != modalImage) {
-        modal.setAttribute('class', 'modal');
-    } 
+    modal.setAttribute('class', 'modal'); 
 };
 
-var handleRightArrow = function (event) {
-    // if (event.target === ArrowRight || event.target === rightArrow) {
-        if (currentIndex === images.length - 1) {
-            currentIndex = 0;
-        } else {
-            currentIndex++;
-        }
-        setSource(currentIndex);
+var clickOnBackdrop = function (event) {
+    if (event.target === modal) {
+        modal.setAttribute('class', 'modal');
+    }  
+}
+
+var handleRightArrow = function () {
+    if (currentIndex === images.length - 1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
+    }
+    setSource(currentIndex);
     };
-       
 
-
-var handleLeftArrow = function (event) {
+var handleLeftArrow = function () {
     if ( currentIndex === 0) {
         currentIndex = images.length - 1;
     } else {
@@ -89,9 +88,17 @@ var handleLeftArrow = function (event) {
     setSource(currentIndex);
 };
 
+var handleKeyPress = function () {
+    event.preventDefault();
+    if (event.key === "ArrowLeft") {
+        handleLeftArrow();
+    } else if (event.key === "ArrowRight") {
+        handleRightArrow();
+    }
+};
+
 button.addEventListener('click', handleClose);
 rightArrow.addEventListener('click', handleRightArrow);
-// ArrowRight.addEventListener('keydown', handleRightArrow); 
 leftArrow.addEventListener('click', handleLeftArrow);
-// ArrowLeft.addEventListener('keydown', handleLeftArrow);
-modal.addEventListener('click', handleClose);
+window.addEventListener('keydown', handleKeyPress);
+modal.addEventListener('click', clickOnBackdrop);
