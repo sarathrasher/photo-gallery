@@ -27,42 +27,43 @@ var setSource = function (index) {
     modalImage.setAttribute('src', images[index].url);
 }
 
-for (var i = 0; i < images.length; i++) {
-    (function(){
-        var container = document.querySelector('.image-list');
-        var index = i;
+// for (var i = 0; i < images.length; i++) {
+images.forEach(function(image, i) {
+    var container = document.querySelector('.image-list');
+    // var index = i;
 
-        var newImage = document.createElement('img');
-        newImage.setAttribute('src', images[index].url);
-        newImage.classList.add('image');
-        
+    var newImage = document.createElement('img');
+    newImage.setAttribute('src', images[i].url);
+    newImage.classList.add('image');
     
-        var caption = document.createElement('p');
-        caption.textContent = images[index].caption;
-        caption.classList.add('caption', 'black-outline', 'pointer')
-        
-    
-        var listItem = document.createElement('li');
-        listItem.classList.add('image-post');
-    
-        var post = document.createElement('div');
-        post.classList.add('post');
-    
-        listItem.appendChild(newImage);
-        listItem.appendChild(caption);
-    
-        post.appendChild(listItem);
-    
-        container.appendChild(post);
 
-        var handleClick = function handleClick(event) {
-            modal.setAttribute('class', 'open modal');
-            setSource(index);
-            currentIndex = index;
-        };
-        caption.addEventListener('click', handleClick);
-    })(); 
-};
+    var caption = document.createElement('p');
+    caption.textContent = images[i].caption;
+    caption.classList.add('caption', 'black-outline', 'pointer')
+    
+    var listItem = document.createElement('li');
+    listItem.classList.add('image-post');
+
+    var post = document.createElement('div');
+    post.classList.add('post');
+
+    listItem.appendChild(newImage);
+    listItem.appendChild(caption);
+
+    post.appendChild(listItem);
+
+    container.appendChild(post);
+
+    var handleClick = function handleClick(event) {
+        modal.setAttribute('class', 'open modal');
+        setSource(i);
+        currentIndex = i;
+    };
+    caption.addEventListener('click', handleClick);
+}); 
+// };
+
+// images.forEach(addNewImage);
 
 var handleClose = function (event) {
     if (event.target === button) {
@@ -73,13 +74,16 @@ var handleClose = function (event) {
 };
 
 var handleRightArrow = function (event) {
-    if (currentIndex === images.length - 1) {
-        currentIndex = 0;
-    } else {
-        currentIndex++;
-    }
-    setSource(currentIndex);
-};
+    // if (event.target === ArrowRight || event.target === rightArrow) {
+        if (currentIndex === images.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        setSource(currentIndex);
+    };
+       
+
 
 var handleLeftArrow = function (event) {
     if ( currentIndex === 0) {
@@ -91,6 +95,8 @@ var handleLeftArrow = function (event) {
 };
 
 button.addEventListener('click', handleClose);
-rightArrow.addEventListener('click', handleRightArrow); 
+rightArrow.addEventListener('click', handleRightArrow);
+// ArrowRight.addEventListener('keydown', handleRightArrow); 
 leftArrow.addEventListener('click', handleLeftArrow);
+// ArrowLeft.addEventListener('keydown', handleLeftArrow);
 modal.addEventListener('click', handleClose);
