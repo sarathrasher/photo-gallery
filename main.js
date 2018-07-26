@@ -13,62 +13,61 @@ var images = [
     {caption: 'First embroidery project.', url: "images/fun.jpg"}
 ];
 
-var modal = document.getElementsByClassName('modal')[0];
-var modalImage = document.getElementsByClassName('modal-image')[0];
-var modalContent = document.getElementsByClassName('modal-content')[0];
-var button = document.getElementsByClassName('close-button')[0];
-var rightArrow = document.getElementsByClassName('right-arrow')[0];
-var leftArrow = document.getElementsByClassName('left-arrow')[0];
-var modalContent = document.getElementsByClassName('modal-content');
+var modal = $('.modal');
+var modalImage = $('.modal-image');
+var modalContent = $('.modal-content');
+var button = $('.close-button');
+var rightArrow = $('.right-arrow');
+var leftArrow = $('.left-arrow');
+var modalContent = $('.modal-content');
 
 var currentIndex
 
 var setSource = function (index) {
-    modalImage.setAttribute('src', images[index].url);
+    modalImage.attr('src', images[index].url);
 }
 
 images.forEach(function(image, i) {
-    var container = document.querySelector('.image-list');
+    var container = $('.image-list');
 
-    var newImage = document.createElement('img');
-    newImage.setAttribute('src', images[i].url);
-    newImage.classList.add('image');
+    var newImage = $('<img>');
+    newImage.attr('src', images[i].url);
+    newImage.addClass('image');
     
-
-    var caption = document.createElement('p');
-    caption.textContent = images[i].caption;
-    caption.classList.add('caption', 'black-outline', 'pointer')
+    var caption = $('<p>');
+    caption.text(images[i].caption);
+    caption.addClass('caption black-outline pointer')
     
-    var listItem = document.createElement('li');
-    listItem.classList.add('image-post');
+    var listItem = $('<li>');
+    listItem.addClass('image-post');
 
-    var post = document.createElement('div');
-    post.classList.add('post');
+    var post = $('<div>');
+    post.addClass('post');
 
-    listItem.appendChild(newImage);
-    listItem.appendChild(caption);
+    listItem.append(newImage);
+    listItem.append(caption);
 
-    post.appendChild(listItem);
+    post.append(listItem);
 
-    container.appendChild(post);
+    container.append(post);
 
     var handleClick = function handleClick(event) {
-        modal.setAttribute('class', 'open modal');
+        modal.attr('class', 'open modal');
         setSource(i);
         currentIndex = i;
     };
-    caption.addEventListener('click', handleClick);
+    caption.on('click', handleClick);
 }); 
 
 var handleClose = function (event) {
-    modal.setAttribute('class', 'modal'); 
+    modal.removeClass('open'); 
 };
 
 var clickOnBackdrop = function (event) {
-    if (event.target === modal) {
-        modal.setAttribute('class', 'modal');
+    if (event.target === modal[0]) {
+        modal.removeClass('open');
     }  
-}
+};
 
 var handleRightArrow = function () {
     if (currentIndex === images.length - 1) {
@@ -97,8 +96,8 @@ var handleKeyPress = function () {
     }
 };
 
-button.addEventListener('click', handleClose);
-rightArrow.addEventListener('click', handleRightArrow);
-leftArrow.addEventListener('click', handleLeftArrow);
-window.addEventListener('keydown', handleKeyPress);
-modal.addEventListener('click', clickOnBackdrop);
+button.on('click', handleClose);
+rightArrow.on('click', handleRightArrow);
+leftArrow.on('click', handleLeftArrow);
+$(window).on('keydown', handleKeyPress);
+modal.on('click', clickOnBackdrop);

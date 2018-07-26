@@ -38,8 +38,9 @@ body {
 
 .name {
     margin: 0.25em;
-    font-family: "playlist-script", Helvetica, sans-serif;
-    font-size: 4em;
+    font-family: "playlist-script", "Bad Script", sans-serif;
+    font-size: 4.5em;
+    font-weight: 700;
 }
 
 .about-summary {
