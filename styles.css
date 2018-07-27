@@ -30,12 +30,6 @@ body {
     text-align: center;
 }
 
-.selfie {
-    width: 5em;
-    height: 5em;
-    border-radius: 50%
-}
-
 .name {
     margin: 0.25em;
     font-family: "playlist-script", "Bad Script", sans-serif;
@@ -59,15 +53,13 @@ body {
     list-style: none;
     overflow-y: auto;
     padding: 0;
-}
-
-.post {
-    margin: 0 3em 1em 3em;
+    
 }
 
 .image-post {
     position: relative;
     width: 15em;
+    margin: 0 3em 1em 3em;
 }
 
 .image-post:hover .caption {

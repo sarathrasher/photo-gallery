@@ -31,25 +31,20 @@ images.forEach(function(image, i) {
     var container = $('.image-list');
 
     var newImage = $('<img>');
-    newImage.attr('src', images[i].url);
+    newImage.attr('src', image.url);
     newImage.addClass('image');
     
     var caption = $('<p>');
-    caption.text(images[i].caption);
+    caption.text(image.caption);
     caption.addClass('caption black-outline pointer')
     
     var listItem = $('<li>');
     listItem.addClass('image-post');
 
-    var post = $('<div>');
-    post.addClass('post');
-
     listItem.append(newImage);
     listItem.append(caption);
-
-    post.append(listItem);
-
-    container.append(post);
+   
+    container.append(listItem);
 
     var handleClick = function handleClick(event) {
         modal.attr('class', 'open modal');
