@@ -20,6 +20,8 @@ var button = $('.close-button');
 var rightArrow = $('.right-arrow');
 var leftArrow = $('.left-arrow');
 var modalContent = $('.modal-content');
+var toTopLink = $('.to-top-link');
+var mainDiv = $('.main');
 
 var currentIndex
 
@@ -36,7 +38,7 @@ images.forEach(function(image, i) {
     
     var caption = $('<p>');
     caption.text(image.caption);
-    caption.addClass('caption black-outline pointer')
+    caption.addClass('caption black-outline pointer');
     
     var listItem = $('<li>');
     listItem.addClass('image-post');
@@ -91,8 +93,15 @@ var handleKeyPress = function () {
     }
 };
 
+var toTop = function () {
+    $('html, body').animate({
+        scrollTop: $("#main").offset().top
+    }, 2000);
+};
+
 button.on('click', handleClose);
 rightArrow.on('click', handleRightArrow);
 leftArrow.on('click', handleLeftArrow);
 $(window).on('keydown', handleKeyPress);
 modal.on('click', clickOnBackdrop);
+toTopLink.on('click', toTop);

@@ -143,6 +143,10 @@ body {
     left: 0;
 }
 
+.bold:hover {
+    font-weight: bold;
+}
+
 .black-outline {
 	text-shadow:
 		-1px -1px 0 #000,
@@ -164,6 +168,21 @@ body {
         width: 20em;
         height: 20em;
     }
+}
+
+.footer {
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: .75em;
+}
+
+.to-top-link {
+    text-decoration: none;
+    color: black;
+}
+
+.to-top-link:hover {
+    font-weight: bold;
 }
 
 
