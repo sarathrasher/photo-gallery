@@ -94,10 +94,8 @@ var handleKeyPress = function () {
 };
 
 var toTop = function () {
-    $('html, body').animate({
-        scrollTop: $("#main").offset().top
-    }, 2000);
-};
+    $(".image-list").animate({ scrollTop: "0" });
+}
 
 button.on('click', handleClose);
 rightArrow.on('click', handleRightArrow);
