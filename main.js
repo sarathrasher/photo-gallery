@@ -7,10 +7,10 @@ var images = [
     {caption: 'Warm hearted quilting--shaping up', url: "images/hearts.jpg"},
     {caption: 'The backbone of my warm-hearted quilt.', url: "images/heart-papers.png"},
     {caption: 'Fabric inspiration', url: "images/fabric.png"},
-    {caption: 'Feel the Bern', url: "images/bernie-pillow.jpg"},
+    {caption: 'Feel the Bern', url: "images/bernie-pillow.JPG"},
     {caption: 'My new life motto', url: "images/sloth.jpg"},
     {caption: 'An ode to Yeezus', url: "images/kanye.jpg"},
-    {caption: 'First embroidery project.', url: "images/fun.jpg"}
+    {caption: 'First embroidery project.', url: "images/fun.JPG"}
 ];
 
 var modal = $('.modal');
